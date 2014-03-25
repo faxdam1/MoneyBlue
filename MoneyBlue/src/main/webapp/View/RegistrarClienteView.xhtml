@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ftm="http://java.sun.com/jsp/jstl/fmt">
+	<h:head>
+		<title>MoneyBlue</title>
+
+	</h:head>
+	<h:body>
+		<h:form id="frmRegistrar">
+			<center>
+
+				<p:panelGrid style="width: 30%;">
+					<p:row>
+						<p:column colspan="4" style="text-align: left;">
+							<p:outputLabel value="Regístrate"
+								style="font-size:150%;font-weight: bolder;"></p:outputLabel>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4" style="text-align: left;">
+							<p:outputLabel
+								value="Es más fácil explorar, comprar y vender lo que quieras"
+								style="font-size:100%;font-weight: 100;"></p:outputLabel>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="1">
+							<p:inputText value="#{ClienteBean.strNombre}"
+								style="width: 100%;text-transform: capitalize;" required="true"
+								label="Nombre" placeholder="Nombre" id="txtNombre"
+								requiredMessage="Introduce tu nombre real." />
+						</p:column>
+						<p:column colspan="1">
+							<p:watermark for="txtNombre" value="Nombre"></p:watermark>
+							<p:message for="txtNombre" display="icon" />
+						</p:column>
+
+						<p:column colspan="1">
+							<p:inputText value="#{ClienteBean.strApellidos}"
+								style="width: 100%;text-transform: capitalize;" required="true"
+								label="Apellido" placeholder="Apellido" id="txtApellido"
+								requiredMessage="Introduce tu primer apellido real."></p:inputText>
+						</p:column>
+
+						<p:column colspan="1">
+							<p:watermark for="txtApellido" value="Apellidos"></p:watermark>
+							<p:message for="txtApellido" display="icon" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="3">
+							<p:inputText value="#{ClienteBean.strEmail}"
+								style="width: 100%;text-transform:lowercase;" required="true"
+								label="Correo" placeholder="Tu correo electrónico"
+								id="txtCorreo"
+								requiredMessage="Introduce una direccion de correo electronica que uses habitualmente."
+								validatorMessage="Ingrese un correo valido.">
+								<f:validateRegex
+									pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"></f:validateRegex>
+								<f:ajax event="change"></f:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column colspan="1">
+							<p:watermark for="txtCorreo" value="Tu correo electrónico"></p:watermark>
+							<p:message for="txtCorreo" display="icon" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3">
+							<p:inputText required="true"
+								validator="#{ClienteBean.validarEmail}"
+								style="width: 100%;text-transform: lowercase;" label="Correo"
+								placeholder="Vuelve a escribir tu correo" id="txtCorreo2"
+								requiredMessage="Ingrese nuevamente su correo electronico.">
+
+							</p:inputText>
+						</p:column>
+						<p:column colspan="1">
+							<p:watermark for="txtCorreo2" value="Vuelve a escribir tu correo"></p:watermark>
+							<p:message for="txtCorreo2" display="icon" />
+
+
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3">
+							<p:password value="#{ClienteBean.strPassword}" style="width: 100%;"
+								required="true" label="Contraseña" placeholder="Contraseña"
+								id="txtClave" lang="es" feedback="true"
+								promptLabel="Ingrese una contraseña" weakLabel="Débil"
+								goodLabel="Buena" strongLabel="Fuerte"
+								requiredMessage="Introduce una contraseña, la contraseña no puede estar en blanco."
+								validatorMessage="Introdusca una contraseña de 6 a 15 caracteres, con una letra mayuscula y minimo un numero.">
+								<f:validateRegex
+									pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})" />
+							</p:password>
+						</p:column>
+						<p:column colspan="1">
+							<p:watermark for="txtClave" value="Contraseña"></p:watermark>
+							<p:message for="txtClave" display="icon" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3">
+							<p:calendar id="dtFechaNacimiento"
+								value="#{ClienteBean.dtmFechaNacimiento}" navigator="true"
+								pattern="dd/MM/yyyy" locale="es" yearRange="c-100:c" />
+
+						</p:column>
+						<p:column colspan="1">
+							<p:watermark for="dtFechaNacimiento" value="Fecha de nacimiento"></p:watermark>
+							<p:message for="dtFechaNacimiento" display="icon" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3" style="text-align: left;">
+							<p:selectOneRadio value="#{ClienteBean.strGenero}"
+								style="width: 100%;" id="logGenero" required="true"
+								requiredMessage="Seleccioné un genero.">
+								<f:selectItem itemLabel="Mujer" itemValue="M" />
+								<f:selectItem itemLabel="Hombre" itemValue="H" />
+							</p:selectOneRadio>
+						</p:column>
+						<p:column colspan="1" style="text-align: left;">
+							<p:message for="logGenero" display="icon" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4" style="text-align: left;">
+							<p:commandButton style="width: 80%;" update="frmRegistrar"
+								value="Regístrate" actionListener="#{ClienteBean.agregarCliente}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="4">
+							<p:messages id="msn" globalOnly="true" showDetail="false" />
+						</p:column>
+					</p:row>
+
+				</p:panelGrid>
+			</center>
+
+
+		</h:form>
+	</h:body>
+</ui:component>
+

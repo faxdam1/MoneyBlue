@@ -7,6 +7,16 @@
  						   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 
+   <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="view">
+                    <bean class="com.moneyblue.infraestructura.shared.ViewScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
 	<context:annotation-config />
 
 	<context:component-scan base-package="com.moneyblue.infraestructura.persistencia.impl" />
@@ -28,7 +38,7 @@
    <!--Repositorios del  paquete com.moneyblue.infraestructura.persistencia.impl -->
     <bean id="repClienteRepository" class="com.moneyblue.infraestructura.persistencia.impl.ClienteRepository"></bean>
     
-    <bean id="ClienteBean" class="com.moneyblue.aplicacion.ClienteBean">
+    <bean id="ClienteBean" class="com.moneyblue.aplicacion.ClienteBean" scope="view"  >
     	<property name="repClienteRepository" ref="repClienteRepository"></property>
     </bean>
 

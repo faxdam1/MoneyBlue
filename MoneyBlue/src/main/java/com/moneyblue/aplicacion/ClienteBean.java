@@ -2,8 +2,10 @@ package com.moneyblue.aplicacion;
 
 import com.moneyblue.infraestructura.persistencia.IClienteRepository;
 import com.moneyblue.dominio.modelo.Cliente;
+
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.application.FacesMessage;
@@ -12,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.validator.ValidatorException;
 import org.springframework.stereotype.Controller;
+
 
 
 @Controller("ClienteBean") 

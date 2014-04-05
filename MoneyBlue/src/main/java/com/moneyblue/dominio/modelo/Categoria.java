@@ -23,7 +23,7 @@ public class Categoria implements Serializable  {
 	}
 
 	private String strNombre;
-	private int numID;
+	private int numID=1;
 	private String strDescripcion;
 	private String strUsuarioCreacion;
 	private Date dtmFechaCreacion;

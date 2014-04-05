@@ -42,7 +42,7 @@ public class Empresa {
 		this.dtmFechaCreacion = dtmFechaCreacion;
 	}
 
-	private int numID;
+	private int numID=1;
 	public Cliente cliente=new Cliente();
 	private String strIdentificacion;
 	public TipoIdentificacion tipoIdentificacion=new TipoIdentificacion();

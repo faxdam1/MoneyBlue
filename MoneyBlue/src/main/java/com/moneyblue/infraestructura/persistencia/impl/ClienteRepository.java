@@ -47,6 +47,7 @@ public class ClienteRepository implements Serializable,IClienteRepository {
 //	   
 //	 List<Person> listaPerson= (List<Person>)m.get("Person");
 	
+	
 	public Cliente agregarCliente(Cliente cliente) {
 		
 		try {
